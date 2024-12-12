@@ -1,0 +1,12 @@
+prometheus:
+  server:
+    persistentVolume:
+      enabled: true
+      storageClass: local-path
+      existingClaim: prometheus-pvc
+
+grafana:
+  persistence:
+    enabled: true
+    storageClassName: local-path
+    existingClaim: grafana-pvc
