@@ -1,0 +1,131 @@
+# Default values for mesin10.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+# This will set the replicaset count more information can be found here: https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/
+replicaCount: 1
+
+# This sets the container image more information can be found here: https://kubernetes.io/docs/concepts/containers/images/
+image:
+  repository: kevin2238/pabrik
+  # This sets the pull policy for images.
+  pullPolicy: Always
+  # Overrides the image tag whose default is the chart appVersion.
+  tag: "opcua_exporter_with_loki"
+
+# This is for the secretes for pulling an image from a private repository more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+imagePullSecrets: []
+# This is to override the chart name.
+nameOverride: ""
+fullnameOverride: ""
+
+env:
+  - name: OPCUA_CONFIG_B64
+    value: "WwoJewoJCSJtZXRyaWNOYW1lIjogInRtU2hvdENvdW50IiwKCQkibm9kZU5hbWUiOiAibnM9MTtpPTExMTcxODgiCgl9LCAKCXsKCQkibWV0cmljTmFtZSI6ICJ0bUhlYXRTdGF0ZSIsCgkJIm5vZGVOYW1lIjogIm5zPTE7aT0xMTE3Nzg4IgoJfSwKCXsKCQkibWV0cmljTmFtZSI6ICJ0bU1vdG9yU3RhdGUiLAoJCSJub2RlTmFtZSI6ICJucz0xO2k9MTExNzc4OSIKCX0sCgl7CgkJIm1ldHJpY05hbWUiOiAidG1PcGVyYXRlTW9kZSIsCgkJIm5vZGVOYW1lIjogIm5zPTE7aT0xMTE3NzkyIgoJfSwKCXsKCQkibWV0cmljTmFtZSI6ICJ0bVRlbXAxX0N1cnJlbnQiLAoJCSJub2RlTmFtZSI6ICJucz0xO2k9MTM1MzM0NTM2IgoJfSwKCXsKCQkibWV0cmljTmFtZSI6ICJ0bVRlbXAxX1NldCIsCgkJIm5vZGVOYW1lIjogIm5zPTE7aT0xMzUzNDI2MDgiCgl9LAoJewoJCSJtZXRyaWNOYW1lIjogInRtVGVtcDJfQ3VycmVudCIsCgkJIm5vZGVOYW1lIjogIm5zPTE7aT0xMzUzMzQ1MzciCgl9LAoJewoJCSJtZXRyaWNOYW1lIjogInRtVGVtcDJfU2V0IiwKCQkibm9kZU5hbWUiOiAibnM9MTtpPTEzNTM0MjYwOSIKCX0sCgl7CgkJIm1ldHJpY05hbWUiOiAidG1UZW1wM19DdXJyZW50IiwKCQkibm9kZU5hbWUiOiAibnM9MTtpPTEzNTMzNDUzOCIKCX0sCgl7CgkJIm1ldHJpY05hbWUiOiAidG1UZW1wM19TZXQiLAoJCSJub2RlTmFtZSI6ICJucz0xO2k9MTM1MzQyNjEwIgoJfSwKCXsKCQkibWV0cmljTmFtZSI6ICJ0bVRlbXA0X0N1cnJlbnQiLAoJCSJub2RlTmFtZSI6ICJucz0xO2k9MTM1MzM0NTM5IgoJfSwKCXsKCQkibWV0cmljTmFtZSI6ICJ0bVRlbXA0X1NldCIsCgkJIm5vZGVOYW1lIjogIm5zPTE7aT0xMzUzNDI2MTEiCgl9LAoJewoJCSJtZXRyaWNOYW1lIjogInRtQ3ljbGVUaW1lIiwKCQkibm9kZU5hbWUiOiAibnM9MTtpPTExMTQ3MzgiCgl9LAoJewoJCSJtZXRyaWNOYW1lIjogInRtRWplY3RUaW1lIiwKCQkibm9kZU5hbWUiOiAibnM9MTtpPTExMTQ3NDUiCgl9LAoJewoJCSJtZXRyaWNOYW1lIjogInRtRWplY3RUaW1lQiIsCgkJIm5vZGVOYW1lIjogIm5zPTE7aT0yMTYzMzIxIgoJfSwKCXsKCQkibWV0cmljTmFtZSI6ICJ0bUZldGNoVGltZSIsCgkJIm5vZGVOYW1lIjogIm5zPTE7aT0xMTE0NzQ2IgoJfSwKCXsKCQkibWV0cmljTmFtZSI6ICJ0bUZldGNoVGltZUIiLAoJCSJub2RlTmFtZSI6ICJucz0xO2k9MjE2MzMyMiIKCX0sCgl7CgkJIm1ldHJpY05hbWUiOiAidG1JbmpCYWNrVGltZSIsCgkJIm5vZGVOYW1lIjogIm5zPTE7aT0xMTE0NzQ0IgoJfSwKCXsKCQkibWV0cmljTmFtZSI6ICJ0bUluakJhY2tUaW1lQiIsCgkJIm5vZGVOYW1lIjogIm5zPTE7aT0yMTYzMzIwIgoJfSwKCXsKCQkibWV0cmljTmFtZSI6ICJ0bUNoYXJnZVRpbWUiLAoJCSJub2RlTmFtZSI6ICJucz0xO2k9MTExNDc0MiIKCX0sCgl7CgkJIm1ldHJpY05hbWUiOiAidG1DaGFyZ2VUaW1lQiIsCgkJIm5vZGVOYW1lIjogIm5zPTE7aT0yMTYzMzE4IgoJfSwKCXsKCQkibWV0cmljTmFtZSI6ICJ0bUNscENsc1RpbWUiLAoJCSJub2RlTmFtZSI6ICJucz0xO2k9MTExNDczOSIKCX0sCgl7CgkJIm1ldHJpY05hbWUiOiAidG1DbHBDbHNUaW1lQiIsCgkJIm5vZGVOYW1lIjogIm5zPTE7aT0yMTYzMzE1IgoJfSwKCXsKCQkibWV0cmljTmFtZSI6ICJ0bUNscE9wZW5UaW1lIiwKCQkibm9kZU5hbWUiOiAibnM9MTtpPTExMTQ3NDMiCgl9LAoJewoJCSJtZXRyaWNOYW1lIjogInRtQ2xwT3BlblRpbWVCIiwKCQkibm9kZU5hbWUiOiAibnM9MTtpPTIxNjMzMTkiCgl9LAoJewoJCSJtZXRyaWNOYW1lIjogInRtSW5qVGltZSIsCgkJIm5vZGVOYW1lIjogIm5zPTE7aT0xMTE0NzQwIgoJfSwKCXsKCQkibWV0cmljTmFtZSI6ICJ0bUlualRpbWVCIiwKCQkibm9kZU5hbWUiOiAibnM9MTtpPTIxNjMzMTYiCgl9LAoJewoJCSJtZXRyaWNOYW1lIjogInRtVHVyblRpbWUiLAoJCSJub2RlTmFtZSI6ICJucz0xO2k9MTExNDc0MSIKCX0sCgl7CgkJIm1ldHJpY05hbWUiOiAidG1UdXJuVGltZUIiLAoJCSJub2RlTmFtZSI6ICJucz0xO2k9MjE2MzMxNyIKCX0sCgl7CgkJIm1ldHJpY05hbWUiOiAidG1iY0Nvb2xUaW1lIiwKCQkibm9kZU5hbWUiOiAibnM9MTtpPTIxNjQzNzUiCgl9LAogICAgICAgIHsKCQkibWV0cmljTmFtZSI6ICJ0bUNyYWZ0SURzdHJpbmciLAoJCSJub2RlTmFtZSI6ICJucz0xO2k9MTEyNTY4MCIKCX0sCl0="
+  - name: OPCUA_ENDPOINT
+    value: "opc.tcp://192.168.1.100:16664"
+
+args: ["-config-b64", "$(OPCUA_CONFIG_B64)", "-endpoint", "$(OPCUA_ENDPOINT)", "-job", "mesin10", "-loki-endpoint", "http://pabrik-loki.default.svc.cluster.local:3100/loki/api/v1/push"]
+
+#This section builds out the service account more information can be found here: https://kubernetes.io/docs/concepts/security/service-accounts/
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Automatically mount a ServiceAccount's API credentials?
+  automount: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+# This is for setting Kubernetes Annotations to a Pod.
+# For more information checkout: https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/
+podAnnotations: {}
+# This is for setting Kubernetes Labels to a Pod.
+# For more information checkout: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
+podLabels: {}
+
+podSecurityContext: {}
+  # fsGroup: 2000
+
+securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
+
+# This is for setting up a service more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/
+service:
+  # This sets the service type more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types
+  type: NodePort
+  # This sets the ports more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#field-spec-ports
+  port: 9686
+
+# This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: chart-example.local
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+resources: {}
+  # We usually recommend not to specify default resources and to leave this as a conscious
+  # choice for the user. This also increases chances charts run on environments with little
+  # resources, such as Minikube. If you do want to specify resources, uncomment the following
+  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+  # limits:
+  #   cpu: 100m
+  #   memory: 128Mi
+  # requests:
+  #   cpu: 100m
+  #   memory: 128Mi
+
+# This is to setup the liveness and readiness probes more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
+livenessProbe:
+  httpGet:
+    path: /metrics
+    port: http
+readinessProbe:
+  httpGet:
+    path: /metrics
+    port: http
+
+#This section is for setting up autoscaling more information can be found here: https://kubernetes.io/docs/concepts/workloads/autoscaling/
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+# Additional volumes on the output Deployment definition.
+volumes: []
+# - name: foo
+#   secret:
+#     secretName: mysecret
+#     optional: false
+
+# Additional volumeMounts on the output Deployment definition.
+volumeMounts: []
+# - name: foo
+#   mountPath: "/etc/foo"
+#   readOnly: true
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
