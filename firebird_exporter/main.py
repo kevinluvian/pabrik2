@@ -11,7 +11,7 @@ product_stock = Gauge('product_stock', 'Stock of product ever sold from SPJ to F
 
 # Sample credentials (in production, use environment variables or a secure store)
 users = {
-    "admin": "password123"  # username: password
+    "kevinfirebirdexporter": "kevinfirebirdexporter123"  # username: password
 }
 
 @auth.verify_password
@@ -51,6 +51,10 @@ def metrics():
 
     # Return the metrics in the Prometheus format
     return Response(generate_latest(product_stock), content_type="text/plain")
+
+@app.route('/')
+def home():
+    return Response()
 
 if __name__ == '__main__':
     # Start the Flask app with authentication

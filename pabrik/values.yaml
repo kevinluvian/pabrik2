@@ -12,6 +12,15 @@ prometheus:
       static_configs:
         - targets:
           - pabrik-mesin10.default.svc.cluster.local:9686
+    - job_name: 'firebird'
+      metrics_path: /metrics
+      static_configs:
+        - targets:
+          - pabrik-firebird-exporter.default.svc.cluster.local:8000
+      basic_auth:
+        username: 'kevinfirebirdexporter'
+        password: 'kevinfirebirdexporter123'
+
 
 
 grafana:
