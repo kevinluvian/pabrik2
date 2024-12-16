@@ -15,4 +15,4 @@ RUN pip3 install -r requirements.txt
 
 EXPOSE 8001
 
-CMD ["python3", "main.py"]
+ENTRYPOINT ["/home/app/start.sh"]
