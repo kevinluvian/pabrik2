@@ -13,6 +13,7 @@ prometheus:
         - targets:
           - pabrik-mesin10.default.svc.cluster.local:9686
     - job_name: 'firebird'
+      scrape_interval: 300s
       metrics_path: /metrics
       static_configs:
         - targets:
