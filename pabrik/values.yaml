@@ -1,5 +1,6 @@
 prometheus:
   server:
+    retention: 5y
     persistentVolume:
       enabled: true
       storageClass: local-path
