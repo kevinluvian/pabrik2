@@ -19,12 +19,10 @@ prometheus:
       metrics_path: /metrics
       static_configs:
         - targets:
-          - metrics.harmoni.skleem.co/metrics
+          - metrics.harmoni.skleem.co
       basic_auth:
         username: 'kevinfirebirdexporter'
         password: 'kevinfirebirdexporter123'
-
-
 
 grafana:
   persistence:
