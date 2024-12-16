@@ -9,6 +9,7 @@ prometheus:
       type: NodePort
   extraScrapeConfigs: |
     - job_name: 'mesin10'
+      scrape_interval: 60s
       metrics_path: /metrics
       static_configs:
         - targets:
