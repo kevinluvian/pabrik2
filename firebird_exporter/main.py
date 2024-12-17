@@ -1,5 +1,6 @@
 import fdb
-from flask import Flask, Response
+import time
+from flask import Flask, request, Response, abort, jsonify
 from flask_httpauth import HTTPBasicAuth
 from prometheus_client import Gauge, generate_latest
 
@@ -19,6 +20,44 @@ def verify_password(username, password):
     if users.get(username) == password:
         return username
     return None
+
+@app.route('/custom', methods=['POST'])
+@auth.login_required
+def custom():
+    data = request.json
+    if 'query' not in data:
+        return abort(404)
+    query = data['query']
+    if 'SELECT' not in query:
+        return abort(404)
+    types = data['types']
+    fields = data['fields']
+
+    # Connect to your database and fetch the row count
+    connection = fdb.connect(database='D:\App\GLSJ\Db\GLSJ.FDB', user='SYSDBA', password='masterkey', charset='ISO8859_1')
+    cur = connection.cursor()
+    cur.execute(query)
+    result = []
+    for row in cur.fetchall():
+        row_result = {}
+        for idx, col in enumerate(row):
+            col_result = col
+            if types[idx] == 'str':
+                col_result = str(col_result).strip()
+            if types[idx] == 'str_upper':
+                col_result = str(col_result).strip().upper()
+            if types[idx] == 'str_lower':
+                col_result = str(col_result).strip().lower()
+            if types[idx] == 'int':
+                col_result = int(col_result)
+            if types[idx] == 'float':
+                col_result = float(col_result)
+            if types[idx] == 'timestamp':
+                col_result = time.mktime(col_result.timetuple())
+            row_result[fields[idx]] = col_result
+        result.append(row_result)
+    return jsonify(result)
+
 
 @app.route('/metrics')
 @auth.login_required
