@@ -24,13 +24,18 @@ def verify_password(username, password):
 @auth.login_required
 def metrics():
     # Connect to your database and fetch the row count
-    connection = fdb.connect(database='/home/app/GLSJ.FDB', user='SYSDBA', password='SUPER', charset='ISO8859_1')
+    connection = fdb.connect(database='D:\App\GLSJ\Db\GLSJ.FDB', user='SYSDBA', password='masterkey', charset='ISO8859_1')
     cur = connection.cursor()
     cur.execute("""SELECT 
      export.F_PROCODE,
      p.F_PRONAME,
      p.F_UNIT,
-     sum(s.F_BEGBAL) + (sum(s.F_IN01) + sum(s.F_IN02) + sum(s.F_IN03) + sum(s.F_IN04) + sum(s.F_IN05) + sum(s.F_IN06) + sum(s.F_IN07) + sum(s.F_IN08) + sum(s.F_IN09) + sum(s.F_IN10) + sum(s.F_IN11) + sum(s.F_IN12)) - (sum(s.F_OUT01) + sum(s.F_OUT02) + sum(s.F_OUT03) + sum(s.F_OUT04) + sum(s.F_OUT05) + sum(s.F_OUT06) + sum(s.F_OUT07) + sum(s.F_OUT08) + sum(s.F_OUT09) + sum(s.F_OUT10) + sum(s.F_OUT11) + sum(s.F_OUT12)) AS CurrentStock
+     (sum(s.F_BEGBAL)  +
+		(sum(s.F_SR01) + sum(s.F_SR02) + sum(s.F_SR03) + sum(s.F_SR04) + sum(s.F_SR05) + sum(s.F_SR06) + sum(s.F_SR07) + sum(s.F_SR08) + sum(s.F_SR09) + sum(s.F_SR10) + sum(s.F_SR11) + sum(s.F_SR12)) +
+		(sum(s.F_PL01) + sum(s.F_PL02) + sum(s.F_PL03) + sum(s.F_PL04) + sum(s.F_PL05) + sum(s.F_PL06) + sum(s.F_PL07) + sum(s.F_PL08) + sum(s.F_PL09) + sum(s.F_PL10) + sum(s.F_PL11) + sum(s.F_PL12)) +
+		(sum(s.F_IN01) + sum(s.F_IN02) + sum(s.F_IN03) + sum(s.F_IN04) + sum(s.F_IN05) + sum(s.F_IN06) + sum(s.F_IN07) + sum(s.F_IN08) + sum(s.F_IN09) + sum(s.F_IN10) + sum(s.F_IN11) + sum(s.F_IN12)) - 
+		(sum(s.F_PR01) + sum(s.F_PR02) + sum(s.F_PR03) + sum(s.F_PR04) + sum(s.F_PR05) + sum(s.F_PR06) + sum(s.F_PR07) + sum(s.F_PR08) + sum(s.F_PR09) + sum(s.F_PR10) + sum(s.F_PR11) + sum(s.F_PR12)) -
+		(sum(s.F_OUT01) + sum(s.F_OUT02) + sum(s.F_OUT03) + sum(s.F_OUT04) + sum(s.F_OUT05) + sum(s.F_OUT06) + sum(s.F_OUT07) + sum(s.F_OUT08) + sum(s.F_OUT09) + sum(s.F_OUT10) + sum(s.F_OUT11) + sum(s.F_OUT12))) AS CurrentStock
  FROM (
      SELECT
          bpbd.F_PROCODE
@@ -57,5 +62,6 @@ def home():
     return Response()
 
 if __name__ == '__main__':
+    from waitress import serve
     # Start the Flask app with authentication
-    app.run(host="0.0.0.0", port=8000)
+    serve(app, host="0.0.0.0", port=8005)
