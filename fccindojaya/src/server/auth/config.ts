@@ -1,8 +1,17 @@
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { type DefaultSession, type NextAuthConfig } from "next-auth";
-import DiscordProvider from "next-auth/providers/discord";
-
+import GoogleProvider from "next-auth/providers/google";
+import { env } from "~/env";
 import { db } from "~/server/db";
+
+const ALLOWLISTED_EMAILS = new Set([
+  "kevinlsmak1@gmail.com",
+  "anneliciaeunice123@gmail.com",
+  "mutiarakosambi247@gmail.com",
+  "sentraplastindojaya@gmail.com",
+  "sutinopang@gmail.com",
+  "ivanfivemadrid@gmail.com",
+]);
 
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
@@ -32,7 +41,10 @@ declare module "next-auth" {
  */
 export const authConfig = {
   providers: [
-    DiscordProvider,
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    }),
     /**
      * ...add more providers here.
      *
@@ -45,6 +57,11 @@ export const authConfig = {
   ],
   adapter: PrismaAdapter(db),
   callbacks: {
+    async signIn({ profile }) {
+      if (!profile?.email) return "/";
+      return ALLOWLISTED_EMAILS.has(profile.email.toLowerCase());
+    },
+
     session: ({ session, user }) => ({
       ...session,
       user: {
