@@ -22,133 +22,161 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 
+const categories = [
+  {
+    name: "New Arrivals",
+    href: "/under-construction",
+    imageSrc: "/home/foto1.jpeg",
+  },
+  {
+    name: "Kancing",
+    href: "/under-construction",
+    imageSrc: "/home/foto2.jpeg",
+  },
+  {
+    name: "Resleting",
+    href: "/under-construction",
+    imageSrc: "/home/foto6.jpeg",
+  },
+  {
+    name: "Accessories",
+    href: "/under-construction",
+    imageSrc: "/home/foto4.jpeg",
+  },
+  {
+    name: "Barang Promo",
+    href: "/under-construction",
+    imageSrc: "/home/foto3.jpeg",
+  },
+];
+
 const navigation = {
   categories: [
-    {
-      id: "women",
-      name: "Women",
-      featured: [
-        {
-          name: "New Arrivals",
-          href: "#",
-          imageSrc:
-            "https://tailwindui.com/plus/img/ecommerce-images/mega-menu-category-01.jpg",
-          imageAlt:
-            "Models sitting back to back, wearing Basic Tee in black and bone.",
-        },
-        {
-          name: "Basic Tees",
-          href: "#",
-          imageSrc:
-            "https://tailwindui.com/plus/img/ecommerce-images/mega-menu-category-02.jpg",
-          imageAlt:
-            "Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.",
-        },
-      ],
-      sections: [
-        {
-          id: "clothing",
-          name: "Clothing",
-          items: [
-            { name: "Tops", href: "#" },
-            { name: "Dresses", href: "#" },
-            { name: "Pants", href: "#" },
-            { name: "Denim", href: "#" },
-            { name: "Sweaters", href: "#" },
-            { name: "T-Shirts", href: "#" },
-            { name: "Jackets", href: "#" },
-            { name: "Activewear", href: "#" },
-            { name: "Browse All", href: "#" },
-          ],
-        },
-        {
-          id: "accessories",
-          name: "Accessories",
-          items: [
-            { name: "Watches", href: "#" },
-            { name: "Wallets", href: "#" },
-            { name: "Bags", href: "#" },
-            { name: "Sunglasses", href: "#" },
-            { name: "Hats", href: "#" },
-            { name: "Belts", href: "#" },
-          ],
-        },
-        {
-          id: "brands",
-          name: "Brands",
-          items: [
-            { name: "Full Nelson", href: "#" },
-            { name: "My Way", href: "#" },
-            { name: "Re-Arranged", href: "#" },
-            { name: "Counterfeit", href: "#" },
-            { name: "Significant Other", href: "#" },
-          ],
-        },
-      ],
-    },
-    {
-      id: "men",
-      name: "Men",
-      featured: [
-        {
-          name: "New Arrivals",
-          href: "#",
-          imageSrc:
-            "https://tailwindui.com/plus/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg",
-          imageAlt:
-            "Drawstring top with elastic loop closure and textured interior padding.",
-        },
-        {
-          name: "Artwork Tees",
-          href: "#",
-          imageSrc:
-            "https://tailwindui.com/plus/img/ecommerce-images/category-page-02-image-card-06.jpg",
-          imageAlt:
-            "Three shirts in gray, white, and blue arranged on table with same line drawing of hands and shapes overlapping on front of shirt.",
-        },
-      ],
-      sections: [
-        {
-          id: "clothing",
-          name: "Clothing",
-          items: [
-            { name: "Tops", href: "#" },
-            { name: "Pants", href: "#" },
-            { name: "Sweaters", href: "#" },
-            { name: "T-Shirts", href: "#" },
-            { name: "Jackets", href: "#" },
-            { name: "Activewear", href: "#" },
-            { name: "Browse All", href: "#" },
-          ],
-        },
-        {
-          id: "accessories",
-          name: "Accessories",
-          items: [
-            { name: "Watches", href: "#" },
-            { name: "Wallets", href: "#" },
-            { name: "Bags", href: "#" },
-            { name: "Sunglasses", href: "#" },
-            { name: "Hats", href: "#" },
-            { name: "Belts", href: "#" },
-          ],
-        },
-        {
-          id: "brands",
-          name: "Brands",
-          items: [
-            { name: "Re-Arranged", href: "#" },
-            { name: "Counterfeit", href: "#" },
-            { name: "Full Nelson", href: "#" },
-            { name: "My Way", href: "#" },
-          ],
-        },
-      ],
-    },
+    // {
+    //   id: "women",
+    //   name: "Women",
+    //   featured: [
+    //     {
+    //       name: "New Arrivals",
+    //       href: "#",
+    //       imageSrc:
+    //         "https://tailwindui.com/plus/img/ecommerce-images/mega-menu-category-01.jpg",
+    //       imageAlt:
+    //         "Models sitting back to back, wearing Basic Tee in black and bone.",
+    //     },
+    //     {
+    //       name: "Basic Tees",
+    //       href: "#",
+    //       imageSrc:
+    //         "https://tailwindui.com/plus/img/ecommerce-images/mega-menu-category-02.jpg",
+    //       imageAlt:
+    //         "Close up of Basic Tee fall bundle with off-white, ochre, olive, and black tees.",
+    //     },
+    //   ],
+    //   sections: [
+    //     {
+    //       id: "clothing",
+    //       name: "Clothing",
+    //       items: [
+    //         { name: "Tops", href: "#" },
+    //         { name: "Dresses", href: "#" },
+    //         { name: "Pants", href: "#" },
+    //         { name: "Denim", href: "#" },
+    //         { name: "Sweaters", href: "#" },
+    //         { name: "T-Shirts", href: "#" },
+    //         { name: "Jackets", href: "#" },
+    //         { name: "Activewear", href: "#" },
+    //         { name: "Browse All", href: "#" },
+    //       ],
+    //     },
+    //     {
+    //       id: "accessories",
+    //       name: "Accessories",
+    //       items: [
+    //         { name: "Watches", href: "#" },
+    //         { name: "Wallets", href: "#" },
+    //         { name: "Bags", href: "#" },
+    //         { name: "Sunglasses", href: "#" },
+    //         { name: "Hats", href: "#" },
+    //         { name: "Belts", href: "#" },
+    //       ],
+    //     },
+    //     {
+    //       id: "brands",
+    //       name: "Brands",
+    //       items: [
+    //         { name: "Full Nelson", href: "#" },
+    //         { name: "My Way", href: "#" },
+    //         { name: "Re-Arranged", href: "#" },
+    //         { name: "Counterfeit", href: "#" },
+    //         { name: "Significant Other", href: "#" },
+    //       ],
+    //     },
+    //   ],
+    // },
+    // {
+    //   id: "men",
+    //   name: "Men",
+    //   featured: [
+    //     {
+    //       name: "New Arrivals",
+    //       href: "#",
+    //       imageSrc:
+    //         "https://tailwindui.com/plus/img/ecommerce-images/product-page-04-detail-product-shot-01.jpg",
+    //       imageAlt:
+    //         "Drawstring top with elastic loop closure and textured interior padding.",
+    //     },
+    //     {
+    //       name: "Artwork Tees",
+    //       href: "#",
+    //       imageSrc:
+    //         "https://tailwindui.com/plus/img/ecommerce-images/category-page-02-image-card-06.jpg",
+    //       imageAlt:
+    //         "Three shirts in gray, white, and blue arranged on table with same line drawing of hands and shapes overlapping on front of shirt.",
+    //     },
+    //   ],
+    //   sections: [
+    //     {
+    //       id: "clothing",
+    //       name: "Clothing",
+    //       items: [
+    //         { name: "Tops", href: "#" },
+    //         { name: "Pants", href: "#" },
+    //         { name: "Sweaters", href: "#" },
+    //         { name: "T-Shirts", href: "#" },
+    //         { name: "Jackets", href: "#" },
+    //         { name: "Activewear", href: "#" },
+    //         { name: "Browse All", href: "#" },
+    //       ],
+    //     },
+    //     {
+    //       id: "accessories",
+    //       name: "Accessories",
+    //       items: [
+    //         { name: "Watches", href: "#" },
+    //         { name: "Wallets", href: "#" },
+    //         { name: "Bags", href: "#" },
+    //         { name: "Sunglasses", href: "#" },
+    //         { name: "Hats", href: "#" },
+    //         { name: "Belts", href: "#" },
+    //       ],
+    //     },
+    //     {
+    //       id: "brands",
+    //       name: "Brands",
+    //       items: [
+    //         { name: "Re-Arranged", href: "#" },
+    //         { name: "Counterfeit", href: "#" },
+    //         { name: "Full Nelson", href: "#" },
+    //         { name: "My Way", href: "#" },
+    //       ],
+    //     },
+    //   ],
+    // },
   ],
   pages: [
-    { name: "Company", href: "#" },
-    { name: "Stores", href: "#" },
+    { name: "Home", href: "#" },
+    // { name: "Stores", href: "#" },
   ],
 };
 const favorites = [
@@ -183,30 +211,30 @@ const favorites = [
 ];
 const footerNavigation = {
   shop: [
-    { name: "Bags", href: "#" },
-    { name: "Tees", href: "#" },
-    { name: "Objects", href: "#" },
-    { name: "Home Goods", href: "#" },
-    { name: "Accessories", href: "#" },
+    // { name: "Bags", href: "#" },
+    // { name: "Tees", href: "#" },
+    // { name: "Objects", href: "#" },
+    // { name: "Home Goods", href: "#" },
+    // { name: "Accessories", href: "#" },
   ],
   company: [
-    { name: "Who we are", href: "#" },
-    { name: "Sustainability", href: "#" },
-    { name: "Press", href: "#" },
-    { name: "Careers", href: "#" },
-    { name: "Terms & Conditions", href: "#" },
-    { name: "Privacy", href: "#" },
+    // { name: "Who we are", href: "#" },
+    // { name: "Sustainability", href: "#" },
+    // { name: "Press", href: "#" },
+    // { name: "Careers", href: "#" },
+    // { name: "Terms & Conditions", href: "#" },
+    // { name: "Privacy", href: "#" },
   ],
   account: [
-    { name: "Manage Account", href: "#" },
-    { name: "Returns & Exchanges", href: "#" },
-    { name: "Redeem a Gift Card", href: "#" },
+    // { name: "Manage Account", href: "#" },
+    // { name: "Returns & Exchanges", href: "#" },
+    // { name: "Redeem a Gift Card", href: "#" },
   ],
   connect: [
-    { name: "Contact Us", href: "#" },
-    { name: "Facebook", href: "#" },
-    { name: "Instagram", href: "#" },
-    { name: "Pinterest", href: "#" },
+    // { name: "Contact Us", href: "#" },
+    // { name: "Facebook", href: "#" },
+    // { name: "Instagram", href: "#" },
+    // { name: "Pinterest", href: "#" },
   ],
 };
 
@@ -371,7 +399,7 @@ export function HomeComponent() {
         >
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex h-16 items-center">
-              <button
+              {/* <button
                 type="button"
                 onClick={() => setOpen(true)}
                 className="relative rounded-md bg-white p-2 text-gray-400 lg:hidden"
@@ -379,17 +407,13 @@ export function HomeComponent() {
                 <span className="absolute -inset-0.5" />
                 <span className="sr-only">Open menu</span>
                 <Bars3Icon aria-hidden="true" className="size-6" />
-              </button>
+              </button> */}
 
               {/* Logo */}
               <div className="ml-4 flex lg:ml-0">
-                <a href="#">
+                <a href="/">
                   <span className="sr-only">Your Company</span>
-                  <img
-                    alt=""
-                    src="https://tailwindui.com/plus/img/logos/mark.svg?color=indigo&shade=600"
-                    className="h-8 w-auto"
-                  />
+                  <img alt="" src="/logo.png" className="h-8 w-auto" />
                 </a>
               </div>
 
@@ -499,7 +523,7 @@ export function HomeComponent() {
               </PopoverGroup>
 
               <div className="ml-auto flex items-center">
-                <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
+                {/* <div className="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
                   <a
                     href="#"
                     className="text-sm font-medium text-gray-700 hover:text-gray-800"
@@ -528,10 +552,10 @@ export function HomeComponent() {
                     <span className="ml-3 block text-sm font-medium">CAD</span>
                     <span className="sr-only">, change currency</span>
                   </a>
-                </div>
+                </div> */}
 
                 {/* Search */}
-                <div className="flex lg:ml-6">
+                {/* <div className="flex lg:ml-6">
                   <a href="#" className="p-2 text-gray-400 hover:text-gray-500">
                     <span className="sr-only">Search</span>
                     <MagnifyingGlassIcon
@@ -539,10 +563,10 @@ export function HomeComponent() {
                       className="size-6"
                     />
                   </a>
-                </div>
+                </div> */}
 
                 {/* Cart */}
-                <div className="ml-4 flow-root lg:ml-6">
+                {/* <div className="ml-4 flow-root lg:ml-6">
                   <a href="#" className="group -m-2 flex items-center p-2">
                     <ShoppingBagIcon
                       aria-hidden="true"
@@ -553,68 +577,58 @@ export function HomeComponent() {
                     </span>
                     <span className="sr-only">items in cart, view bag</span>
                   </a>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
         </nav>
 
         {/* Hero section */}
-        <div className="pb-80 pt-16 sm:pb-40 sm:pt-24 lg:pb-48 lg:pt-40">
+        <div className="pb-40 pt-16 sm:pb-40 sm:pt-24 lg:pb-48 lg:pt-40">
           <div className="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
-            <div className="sm:max-w-lg">
+            <div className="relative z-10 sm:max-w-lg">
               <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-                Summer styles are finally here
+                FCC Indo Jaya
               </h1>
               <p className="mt-4 text-xl text-gray-500">
-                This year, our new summer collection will shelter you from the
-                harsh elements of a world that doesn't care if you live or die.
+                Bergerak dalam bidang jual-beli aksesoris garmen seperti
+                resleting, kancing, mote-mote, karet, benang, stopper, gesper,
+                alat tembakan merek, tali merek, lem tembak, peniti dan
+                lain-lain.<br></br>
+                <br></br> Jakarta, Indonesia
               </p>
             </div>
             <div>
               <div className="mt-10">
                 {/* Decorative image grid */}
+                <a
+                  target="_blank"
+                  href="https://wa.me/+6287846854410/?text=Halo FCC Indo Jaya, saya menemukan website anda dan ingin bertanya"
+                  className="relative z-10 inline-block rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-center font-medium text-white hover:bg-indigo-700"
+                >
+                  <div className="flex items-center justify-center">
+                    <img src="/home/wa.png" className="mr-2 h-8 w-auto"></img>
+                    Hubungi Kami
+                  </div>
+                </a>
                 <div
                   aria-hidden="true"
                   className="pointer-events-none lg:absolute lg:inset-y-0 lg:mx-auto lg:w-full lg:max-w-7xl"
                 >
-                  <div className="absolute transform sm:left-1/2 sm:top-0 sm:translate-x-8 lg:left-1/2 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-8">
+                  <div className="absolute top-[-10px] transform opacity-10 sm:left-1/2 sm:top-0 sm:translate-x-8 sm:opacity-100 lg:left-1/2 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-8">
                     <div className="flex items-center space-x-6 lg:space-x-8">
                       <div className="grid shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
                         <div className="h-64 w-44 overflow-hidden rounded-lg sm:opacity-0 lg:opacity-100">
                           <img
                             alt=""
-                            src="https://tailwindui.com/plus/img/ecommerce-images/home-page-03-hero-image-tile-01.jpg"
+                            src="/home/foto1.jpeg"
                             className="size-full object-cover"
                           />
                         </div>
                         <div className="h-64 w-44 overflow-hidden rounded-lg">
                           <img
                             alt=""
-                            src="https://tailwindui.com/plus/img/ecommerce-images/home-page-03-hero-image-tile-02.jpg"
-                            className="size-full object-cover"
-                          />
-                        </div>
-                      </div>
-                      <div className="grid shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
-                        <div className="h-64 w-44 overflow-hidden rounded-lg">
-                          <img
-                            alt=""
-                            src="https://tailwindui.com/plus/img/ecommerce-images/home-page-03-hero-image-tile-03.jpg"
-                            className="size-full object-cover"
-                          />
-                        </div>
-                        <div className="h-64 w-44 overflow-hidden rounded-lg">
-                          <img
-                            alt=""
-                            src="https://tailwindui.com/plus/img/ecommerce-images/home-page-03-hero-image-tile-04.jpg"
-                            className="size-full object-cover"
-                          />
-                        </div>
-                        <div className="h-64 w-44 overflow-hidden rounded-lg">
-                          <img
-                            alt=""
-                            src="https://tailwindui.com/plus/img/ecommerce-images/home-page-03-hero-image-tile-05.jpg"
+                            src="/home/foto2.jpeg"
                             className="size-full object-cover"
                           />
                         </div>
@@ -623,14 +637,37 @@ export function HomeComponent() {
                         <div className="h-64 w-44 overflow-hidden rounded-lg">
                           <img
                             alt=""
-                            src="https://tailwindui.com/plus/img/ecommerce-images/home-page-03-hero-image-tile-06.jpg"
+                            src="/home/foto3.jpeg"
                             className="size-full object-cover"
                           />
                         </div>
                         <div className="h-64 w-44 overflow-hidden rounded-lg">
                           <img
                             alt=""
-                            src="https://tailwindui.com/plus/img/ecommerce-images/home-page-03-hero-image-tile-07.jpg"
+                            src="/home/foto4.jpeg"
+                            className="size-full object-cover"
+                          />
+                        </div>
+                        <div className="h-64 w-44 overflow-hidden rounded-lg">
+                          <img
+                            alt=""
+                            src="/home/foto5.jpeg"
+                            className="size-full object-cover"
+                          />
+                        </div>
+                      </div>
+                      <div className="grid shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
+                        <div className="h-64 w-44 overflow-hidden rounded-lg">
+                          <img
+                            alt=""
+                            src="/home/foto6.jpeg"
+                            className="size-full object-cover"
+                          />
+                        </div>
+                        <div className="h-64 w-44 overflow-hidden rounded-lg">
+                          <img
+                            alt=""
+                            src="/home/foto7.jpeg"
                             className="size-full object-cover"
                           />
                         </div>
@@ -638,13 +675,6 @@ export function HomeComponent() {
                     </div>
                   </div>
                 </div>
-
-                <a
-                  href="#"
-                  className="inline-block rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-center font-medium text-white hover:bg-indigo-700"
-                >
-                  Shop Collection
-                </a>
               </div>
             </div>
           </div>
@@ -653,277 +683,104 @@ export function HomeComponent() {
 
       <main>
         {/* Category section */}
-        <section aria-labelledby="category-heading" className="bg-gray-50">
-          <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
-            <div className="sm:flex sm:items-baseline sm:justify-between">
-              <h2
-                id="category-heading"
-                className="text-2xl font-bold tracking-tight text-gray-900"
-              >
-                Shop by Category
-              </h2>
-              <a
-                href="#"
-                className="hidden text-sm font-semibold text-indigo-600 hover:text-indigo-500 sm:block"
-              >
-                Browse all categories
-                <span aria-hidden="true"> &rarr;</span>
-              </a>
-            </div>
+        <section
+          aria-labelledby="category-heading"
+          className="pt-24 sm:pt-32 xl:mx-auto xl:max-w-7xl xl:px-8"
+        >
+          <div className="px-4 sm:flex sm:items-center sm:justify-between sm:px-6 lg:px-8 xl:px-0">
+            <h2
+              id="category-heading"
+              className="text-2xl font-bold tracking-tight text-gray-900"
+            >
+              Kategori Barang
+            </h2>
+            {/* <a
+              href="#"
+              className="hidden text-sm font-semibold text-indigo-600 hover:text-indigo-500 sm:block"
+            >
+              Browse all categories
+              <span aria-hidden="true"> &rarr;</span>
+            </a> */}
+          </div>
 
-            <div className="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:grid-rows-2 sm:gap-x-6 lg:gap-8">
-              <div className="group relative aspect-[2/1] overflow-hidden rounded-lg sm:row-span-2 sm:aspect-square">
-                <img
-                  alt="Two models wearing women's black cotton crewneck tee and off-white cotton crewneck tee."
-                  src="https://tailwindui.com/plus/img/ecommerce-images/home-page-03-featured-category.jpg"
-                  className="absolute size-full object-cover group-hover:opacity-75"
-                />
-                <div
-                  aria-hidden="true"
-                  className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-50"
-                />
-                <div className="absolute inset-0 flex items-end p-6">
-                  <div>
-                    <h3 className="font-semibold text-white">
-                      <a href="#">
-                        <span className="absolute inset-0" />
-                        New Arrivals
-                      </a>
-                    </h3>
-                    <p aria-hidden="true" className="mt-1 text-sm text-white">
-                      Shop now
-                    </p>
-                  </div>
+          <div className="mt-4 flow-root">
+            <div className="-my-2">
+              <div className="relative box-content h-80 overflow-x-auto py-2 xl:overflow-visible">
+                <div className="absolute flex space-x-8 px-4 sm:px-6 lg:px-8 xl:relative xl:grid xl:grid-cols-5 xl:gap-x-8 xl:space-x-0 xl:px-0">
+                  {categories.map((category) => (
+                    <a
+                      key={category.name}
+                      href={category.href}
+                      className="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto"
+                    >
+                      <span aria-hidden="true" className="absolute inset-0">
+                        <img
+                          alt=""
+                          src={category.imageSrc}
+                          className="size-full object-cover"
+                        />
+                      </span>
+                      <span
+                        aria-hidden="true"
+                        className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-gray-800 opacity-50"
+                      />
+                      <span className="relative mt-auto text-center text-xl font-bold text-white">
+                        {category.name}
+                      </span>
+                    </a>
+                  ))}
                 </div>
               </div>
-              <div className="group relative aspect-[2/1] overflow-hidden rounded-lg sm:aspect-auto">
-                <img
-                  alt="Wooden shelf with gray and olive drab green baseball caps, next to wooden clothes hanger with sweaters."
-                  src="https://tailwindui.com/plus/img/ecommerce-images/home-page-03-category-01.jpg"
-                  className="absolute size-full object-cover group-hover:opacity-75"
-                />
-                <div
-                  aria-hidden="true"
-                  className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-50"
-                />
-                <div className="absolute inset-0 flex items-end p-6">
-                  <div>
-                    <h3 className="font-semibold text-white">
-                      <a href="#">
-                        <span className="absolute inset-0" />
-                        Accessories
-                      </a>
-                    </h3>
-                    <p aria-hidden="true" className="mt-1 text-sm text-white">
-                      Shop now
-                    </p>
-                  </div>
-                </div>
-              </div>
-              <div className="group relative aspect-[2/1] overflow-hidden rounded-lg sm:aspect-auto">
-                <img
-                  alt="Walnut desk organizer set with white modular trays, next to porcelain mug on wooden desk."
-                  src="https://tailwindui.com/plus/img/ecommerce-images/home-page-03-category-02.jpg"
-                  className="absolute size-full object-cover group-hover:opacity-75"
-                />
-                <div
-                  aria-hidden="true"
-                  className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-50"
-                />
-                <div className="absolute inset-0 flex items-end p-6">
-                  <div>
-                    <h3 className="font-semibold text-white">
-                      <a href="#">
-                        <span className="absolute inset-0" />
-                        Workspace
-                      </a>
-                    </h3>
-                    <p aria-hidden="true" className="mt-1 text-sm text-white">
-                      Shop now
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-6 sm:hidden">
-              <a
-                href="#"
-                className="block text-sm font-semibold text-indigo-600 hover:text-indigo-500"
-              >
-                Browse all categories
-                <span aria-hidden="true"> &rarr;</span>
-              </a>
             </div>
           </div>
+
+          {/* <div className="mt-6 px-4 sm:hidden">
+            <a
+              href="#"
+              className="block text-sm font-semibold text-indigo-600 hover:text-indigo-500"
+            >
+              Browse all categories
+              <span aria-hidden="true"> &rarr;</span>
+            </a>
+          </div> */}
         </section>
 
         {/* Featured section */}
-        <section aria-labelledby="cause-heading">
-          <div className="relative bg-gray-800 px-6 py-32 sm:px-12 sm:py-40 lg:px-16">
-            <div className="absolute inset-0 overflow-hidden">
+        <section
+          aria-labelledby="social-impact-heading"
+          className="mx-auto max-w-7xl px-4 pt-24 sm:px-6 sm:pt-32 lg:px-8"
+        >
+          <div className="relative overflow-hidden rounded-lg">
+            <div className="absolute inset-0">
               <img
                 alt=""
-                src="https://tailwindui.com/plus/img/ecommerce-images/home-page-03-feature-section-full-width.jpg"
+                src="https://tailwindui.com/plus/img/ecommerce-images/home-page-01-feature-section-01.jpg"
                 className="size-full object-cover"
               />
             </div>
-            <div
-              aria-hidden="true"
-              className="absolute inset-0 bg-gray-900/50"
-            />
-            <div className="relative mx-auto flex max-w-3xl flex-col items-center text-center">
-              <h2
-                id="cause-heading"
-                className="text-3xl font-bold tracking-tight text-white sm:text-4xl"
-              >
-                Long-term thinking
-              </h2>
-              <p className="mt-3 text-xl text-white">
-                We're committed to responsible, sustainable, and ethical
-                manufacturing. Our small-scale approach allows us to focus on
-                quality and reduce our impact. We're doing our best to delay the
-                inevitable heat-death of the universe.
-              </p>
-              <a
-                href="#"
-                className="mt-8 block w-full rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-gray-900 hover:bg-gray-100 sm:w-auto"
-              >
-                Read our story
-              </a>
-            </div>
-          </div>
-        </section>
-
-        {/* Favorites section */}
-        <section aria-labelledby="favorites-heading">
-          <div className="mx-auto max-w-7xl px-4 py-24 sm:px-6 sm:py-32 lg:px-8">
-            <div className="sm:flex sm:items-baseline sm:justify-between">
-              <h2
-                id="favorites-heading"
-                className="text-2xl font-bold tracking-tight text-gray-900"
-              >
-                Our Favorites
-              </h2>
-              <a
-                href="#"
-                className="hidden text-sm font-semibold text-indigo-600 hover:text-indigo-500 sm:block"
-              >
-                Browse all favorites
-                <span aria-hidden="true"> &rarr;</span>
-              </a>
-            </div>
-
-            <div className="mt-6 grid grid-cols-1 gap-y-10 sm:grid-cols-3 sm:gap-x-6 sm:gap-y-0 lg:gap-x-8">
-              {favorites.map((favorite) => (
-                <div key={favorite.id} className="group relative">
-                  <img
-                    alt={favorite.imageAlt}
-                    src={favorite.imageSrc}
-                    className="h-96 w-full rounded-lg object-cover group-hover:opacity-75 sm:aspect-[2/3] sm:h-auto"
-                  />
-                  <h3 className="mt-4 text-base font-semibold text-gray-900">
-                    <a href={favorite.href}>
-                      <span className="absolute inset-0" />
-                      {favorite.name}
-                    </a>
-                  </h3>
-                  <p className="mt-1 text-sm text-gray-500">{favorite.price}</p>
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-6 sm:hidden">
-              <a
-                href="#"
-                className="block text-sm font-semibold text-indigo-600 hover:text-indigo-500"
-              >
-                Browse all favorites
-                <span aria-hidden="true"> &rarr;</span>
-              </a>
-            </div>
-          </div>
-        </section>
-
-        {/* CTA section */}
-        <section aria-labelledby="sale-heading">
-          <div className="overflow-hidden pt-32 sm:pt-14">
-            <div className="bg-gray-800">
-              <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div className="relative pb-16 pt-48 sm:pb-24">
-                  <div>
-                    <h2
-                      id="sale-heading"
-                      className="text-4xl font-bold tracking-tight text-white md:text-5xl"
-                    >
-                      Final Stock.
-                      <br />
-                      Up to 50% off.
-                    </h2>
-                    <div className="mt-6 text-base">
-                      <a href="#" className="font-semibold text-white">
-                        Shop the sale
-                        <span aria-hidden="true"> &rarr;</span>
-                      </a>
-                    </div>
-                  </div>
-
-                  <div className="absolute -top-32 left-1/2 -translate-x-1/2 transform sm:top-6 sm:translate-x-0">
-                    <div className="ml-24 flex min-w-max space-x-6 sm:ml-3 lg:space-x-8">
-                      <div className="flex space-x-6 sm:flex-col sm:space-x-0 sm:space-y-6 lg:space-y-8">
-                        <div className="shrink-0">
-                          <img
-                            alt=""
-                            src="https://tailwindui.com/plus/img/ecommerce-images/home-page-03-category-01.jpg"
-                            className="size-64 rounded-lg object-cover md:size-72"
-                          />
-                        </div>
-
-                        <div className="mt-6 shrink-0 sm:mt-0">
-                          <img
-                            alt=""
-                            src="https://tailwindui.com/plus/img/ecommerce-images/home-page-03-category-02.jpg"
-                            className="size-64 rounded-lg object-cover md:size-72"
-                          />
-                        </div>
-                      </div>
-                      <div className="flex space-x-6 sm:-mt-20 sm:flex-col sm:space-x-0 sm:space-y-6 lg:space-y-8">
-                        <div className="shrink-0">
-                          <img
-                            alt=""
-                            src="https://tailwindui.com/plus/img/ecommerce-images/home-page-03-favorite-01.jpg"
-                            className="size-64 rounded-lg object-cover md:size-72"
-                          />
-                        </div>
-
-                        <div className="mt-6 shrink-0 sm:mt-0">
-                          <img
-                            alt=""
-                            src="https://tailwindui.com/plus/img/ecommerce-images/home-page-03-favorite-02.jpg"
-                            className="size-64 rounded-lg object-cover md:size-72"
-                          />
-                        </div>
-                      </div>
-                      <div className="flex space-x-6 sm:flex-col sm:space-x-0 sm:space-y-6 lg:space-y-8">
-                        <div className="shrink-0">
-                          <img
-                            alt=""
-                            src="https://tailwindui.com/plus/img/ecommerce-images/home-page-03-category-01.jpg"
-                            className="size-64 rounded-lg object-cover md:size-72"
-                          />
-                        </div>
-
-                        <div className="mt-6 shrink-0 sm:mt-0">
-                          <img
-                            alt=""
-                            src="https://tailwindui.com/plus/img/ecommerce-images/home-page-03-category-02.jpg"
-                            className="size-64 rounded-lg object-cover md:size-72"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+            <div className="relative bg-gray-900/75 px-6 py-32 sm:px-12 sm:py-40 lg:px-16">
+              <div className="relative mx-auto flex max-w-3xl flex-col items-center text-center">
+                <h2
+                  id="social-impact-heading"
+                  className="text-3xl font-bold tracking-tight text-white sm:text-4xl"
+                >
+                  <span className="block sm:inline">
+                    Hubungi kami untuk pemesanan
+                  </span>
+                  <span className="block sm:inline"></span>
+                </h2>
+                <p className="mt-3 text-xl text-white">
+                  Menerima pemesanan hanya secara grosir melalui WhatsApp
+                  0878-4685-4410.
+                </p>
+                <a
+                  href="https://wa.me/+6287846854410/?text=Halo FCC Indo Jaya, saya melihat website anda dan ingin bertanya"
+                  target="_blank"
+                  className="mt-8 block flex w-full items-center justify-center rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-gray-900 hover:bg-gray-300 sm:w-auto"
+                >
+                  <img src="/home/wa.png" className="mr-2 h-8 w-auto"></img>
+                  Kirim Pesan Whatsapp
+                </a>
               </div>
             </div>
           </div>
@@ -935,7 +792,7 @@ export function HomeComponent() {
           Footer
         </h2>
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="py-20 xl:grid xl:grid-cols-3 xl:gap-8">
+          {/* <div className="py-20 xl:grid xl:grid-cols-3 xl:gap-8">
             <div className="grid grid-cols-2 gap-8 xl:col-span-2">
               <div className="space-y-16 md:grid md:grid-cols-2 md:gap-8 md:space-y-0">
                 <div>
@@ -1029,11 +886,11 @@ export function HomeComponent() {
                 </div>
               </form>
             </div>
-          </div>
+          </div> */}
 
           <div className="border-t border-gray-200 py-10">
             <p className="text-sm text-gray-500">
-              Copyright &copy; 2021 Your Company, Inc.
+              Copyright &copy; 2024 PT. FCC Indo Jaya
             </p>
           </div>
         </div>
