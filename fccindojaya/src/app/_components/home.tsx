@@ -15,12 +15,8 @@ import {
   TabPanel,
   TabPanels,
 } from "@headlessui/react";
-import {
-  Bars3Icon,
-  MagnifyingGlassIcon,
-  ShoppingBagIcon,
-  XMarkIcon,
-} from "@heroicons/react/24/outline";
+import { XMarkIcon } from "@heroicons/react/24/outline";
+import Link from "next/link";
 
 const categories = [
   {
@@ -179,64 +175,6 @@ const navigation = {
     // { name: "Stores", href: "#" },
   ],
 };
-const favorites = [
-  {
-    id: 1,
-    name: "Black Basic Tee",
-    price: "$32",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/plus/img/ecommerce-images/home-page-03-favorite-01.jpg",
-    imageAlt: "Model wearing women's black cotton crewneck tee.",
-  },
-  {
-    id: 2,
-    name: "Off-White Basic Tee",
-    price: "$32",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/plus/img/ecommerce-images/home-page-03-favorite-02.jpg",
-    imageAlt: "Model wearing women's off-white cotton crewneck tee.",
-  },
-  {
-    id: 3,
-    name: "Mountains Artwork Tee",
-    price: "$36",
-    href: "#",
-    imageSrc:
-      "https://tailwindui.com/plus/img/ecommerce-images/home-page-03-favorite-03.jpg",
-    imageAlt:
-      "Model wearing women's burgundy red crewneck artwork tee with small white triangle overlapping larger black triangle.",
-  },
-];
-const footerNavigation = {
-  shop: [
-    // { name: "Bags", href: "#" },
-    // { name: "Tees", href: "#" },
-    // { name: "Objects", href: "#" },
-    // { name: "Home Goods", href: "#" },
-    // { name: "Accessories", href: "#" },
-  ],
-  company: [
-    // { name: "Who we are", href: "#" },
-    // { name: "Sustainability", href: "#" },
-    // { name: "Press", href: "#" },
-    // { name: "Careers", href: "#" },
-    // { name: "Terms & Conditions", href: "#" },
-    // { name: "Privacy", href: "#" },
-  ],
-  account: [
-    // { name: "Manage Account", href: "#" },
-    // { name: "Returns & Exchanges", href: "#" },
-    // { name: "Redeem a Gift Card", href: "#" },
-  ],
-  connect: [
-    // { name: "Contact Us", href: "#" },
-    // { name: "Facebook", href: "#" },
-    // { name: "Instagram", href: "#" },
-    // { name: "Pinterest", href: "#" },
-  ],
-};
 
 export function HomeComponent() {
   const [open, setOpen] = useState(false);
@@ -271,7 +209,7 @@ export function HomeComponent() {
             <TabGroup className="mt-2">
               <div className="border-b border-gray-200">
                 <TabList className="-mb-px flex space-x-8 px-4">
-                  {navigation.categories.map((category) => (
+                  {navigation.categories.map((category: any) => (
                     <Tab
                       key={category.name}
                       className="flex-1 whitespace-nowrap border-b-2 border-transparent px-1 py-4 text-base font-medium text-gray-900 data-[selected]:border-indigo-600 data-[selected]:text-indigo-600"
@@ -282,13 +220,13 @@ export function HomeComponent() {
                 </TabList>
               </div>
               <TabPanels as={Fragment}>
-                {navigation.categories.map((category) => (
+                {navigation.categories.map((category: any) => (
                   <TabPanel
                     key={category.name}
                     className="space-y-10 px-4 pb-8 pt-10"
                   >
                     <div className="grid grid-cols-2 gap-x-4">
-                      {category.featured.map((item) => (
+                      {category.featured.map((item: any) => (
                         <div key={item.name} className="group relative text-sm">
                           <img
                             alt={item.imageAlt}
@@ -311,7 +249,7 @@ export function HomeComponent() {
                         </div>
                       ))}
                     </div>
-                    {category.sections.map((section) => (
+                    {category.sections.map((section: any) => (
                       <div key={section.name}>
                         <p
                           id={`${category.id}-${section.id}-heading-mobile`}
@@ -324,7 +262,7 @@ export function HomeComponent() {
                           aria-labelledby={`${category.id}-${section.id}-heading-mobile`}
                           className="mt-6 flex flex-col space-y-6"
                         >
-                          {section.items.map((item) => (
+                          {section.items.map((item: any) => (
                             <li key={item.name} className="flow-root">
                               <a
                                 href={item.href}
@@ -411,16 +349,16 @@ export function HomeComponent() {
 
               {/* Logo */}
               <div className="ml-4 flex lg:ml-0">
-                <a href="/">
+                <Link href="/">
                   <span className="sr-only">Your Company</span>
                   <img alt="" src="/logo.png" className="h-8 w-auto" />
-                </a>
+                </Link>
               </div>
 
               {/* Flyout menus */}
               <PopoverGroup className="hidden lg:ml-8 lg:block lg:self-stretch">
                 <div className="flex h-full space-x-8">
-                  {navigation.categories.map((category) => (
+                  {navigation.categories.map((category: any) => (
                     <Popover key={category.name} className="flex">
                       <div className="relative flex">
                         <PopoverButton className="relative z-10 -mb-px flex items-center border-b-2 border-transparent pt-px text-sm font-medium text-gray-700 transition-colors duration-200 ease-out hover:text-gray-800 data-[open]:border-indigo-600 data-[open]:text-indigo-600">
@@ -449,7 +387,7 @@ export function HomeComponent() {
                           <div className="mx-auto max-w-7xl px-8">
                             <div className="grid grid-cols-2 gap-x-8 gap-y-10 py-16">
                               <div className="col-start-2 grid grid-cols-2 gap-x-8">
-                                {category.featured.map((item) => (
+                                {category.featured.map((item: any) => (
                                   <div
                                     key={item.name}
                                     className="group relative text-base sm:text-sm"
@@ -476,7 +414,7 @@ export function HomeComponent() {
                                 ))}
                               </div>
                               <div className="row-start-1 grid grid-cols-3 gap-x-8 gap-y-10 text-sm">
-                                {category.sections.map((section) => (
+                                {category.sections.map((section: any) => (
                                   <div key={section.name}>
                                     <p
                                       id={`${section.name}-heading`}
@@ -489,7 +427,7 @@ export function HomeComponent() {
                                       aria-labelledby={`${section.name}-heading`}
                                       className="mt-6 space-y-6 sm:mt-4 sm:space-y-4"
                                     >
-                                      {section.items.map((item) => (
+                                      {section.items.map((item: any) => (
                                         <li key={item.name} className="flex">
                                           <a
                                             href={item.href}
@@ -607,7 +545,11 @@ export function HomeComponent() {
                   className="relative z-10 inline-block rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-center font-medium text-white hover:bg-indigo-700"
                 >
                   <div className="flex items-center justify-center">
-                    <img src="/home/wa.png" className="mr-2 h-8 w-auto"></img>
+                    <img
+                      alt="Kirim Whatsapp ke FCC"
+                      src="/home/wa.png"
+                      className="mr-2 h-8 w-auto"
+                    />
                     Hubungi Kami
                   </div>
                 </a>
@@ -776,9 +718,13 @@ export function HomeComponent() {
                 <a
                   href="https://wa.me/+6287846854410/?text=Halo FCC Indo Jaya, saya melihat website anda dan ingin bertanya"
                   target="_blank"
-                  className="mt-8 block flex w-full items-center justify-center rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-gray-900 hover:bg-gray-300 sm:w-auto"
+                  className="mt-8 flex w-full items-center justify-center rounded-md border border-transparent bg-white px-8 py-3 text-base font-medium text-gray-900 hover:bg-gray-300 sm:w-auto"
                 >
-                  <img src="/home/wa.png" className="mr-2 h-8 w-auto"></img>
+                  <img
+                    alt="Kirim Whatsapp ke FCC"
+                    src="/home/wa.png"
+                    className="mr-2 h-8 w-auto"
+                  />
                   Kirim Pesan Whatsapp
                 </a>
               </div>
