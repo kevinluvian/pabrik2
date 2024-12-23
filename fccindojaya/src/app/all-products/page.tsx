@@ -2,6 +2,7 @@ import { Footer } from "~/app/_components/footer";
 import { Header } from "~/app/_components/header";
 import { api } from "~/trpc/server";
 import { FolderArrowDownIcon } from "@heroicons/react/24/outline";
+import Image from "next/image";
 
 interface Product {
   id: number;
@@ -81,7 +82,9 @@ export default async function AllProducts() {
                   target="_blank"
                   className="group"
                 >
-                  <img
+                  <Image
+                    width={280}
+                    height={300}
                     alt={product.imageAlt}
                     src={product.imageSrc}
                     className="aspect-square w-full rounded-lg bg-gray-200 object-cover group-hover:opacity-75 xl:aspect-[7/8]"
