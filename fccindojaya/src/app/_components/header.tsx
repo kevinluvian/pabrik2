@@ -20,7 +20,7 @@ import Link from "next/link";
 
 const navigation = {
   categories: [],
-  pages: [{ name: "Home", href: "#" }],
+  pages: [{ name: "Home", href: "/" }],
 };
 
 export function Header() {
