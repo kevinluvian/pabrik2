@@ -11,17 +11,17 @@ const categories = [
   },
   {
     name: "Kancing",
-    href: "/under-construction",
+    href: "/all-products",
     imageSrc: "/home/foto2.jpeg",
   },
   {
     name: "Resleting",
-    href: "/under-construction",
+    href: "/all-products",
     imageSrc: "/home/foto6.jpeg",
   },
   {
     name: "Accessories",
-    href: "/under-construction",
+    href: "/all-products",
     imageSrc: "/home/foto4.jpeg",
   },
   {
