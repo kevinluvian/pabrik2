@@ -336,7 +336,7 @@ export function HomeComponent() {
           className="relative z-20 bg-white/90 backdrop-blur-xl backdrop-filter"
         >
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="flex h-16 items-center">
+            <div className="flex h-32 items-center">
               {/* <button
                 type="button"
                 onClick={() => setOpen(true)}
@@ -351,7 +351,7 @@ export function HomeComponent() {
               <div className="ml-4 flex lg:ml-0">
                 <Link href="/">
                   <span className="sr-only">Your Company</span>
-                  <img alt="" src="/logo.png" className="h-8 w-auto" />
+                  <img alt="" src="/logo.jpeg" className="h-24 w-auto" />
                 </Link>
               </div>
 
@@ -563,8 +563,8 @@ export function HomeComponent() {
                         <div className="h-64 w-44 overflow-hidden rounded-lg sm:opacity-0 lg:opacity-100">
                           <img
                             alt=""
-                            src="/home/foto1.jpeg"
-                            className="size-full object-cover"
+                            src="/merk/fcc.png"
+                            className="size-full object-contain"
                           />
                         </div>
                         <div className="h-64 w-44 overflow-hidden rounded-lg">
@@ -577,10 +577,17 @@ export function HomeComponent() {
                       </div>
                       <div className="grid shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
                         <div className="h-64 w-44 overflow-hidden rounded-lg">
+                          {/* <img
+                            alt=""
+                            src=""
+                            className="size-full object-cover"
+                          /> */}
+                        </div>
+                        <div className="h-64 w-44 overflow-hidden rounded-lg">
                           <img
                             alt=""
-                            src="/home/foto3.jpeg"
-                            className="size-full object-cover"
+                            src="/merk/sj.png"
+                            className="size-full object-contain"
                           />
                         </div>
                         <div className="h-64 w-44 overflow-hidden rounded-lg">
@@ -590,26 +597,19 @@ export function HomeComponent() {
                             className="size-full object-cover"
                           />
                         </div>
-                        <div className="h-64 w-44 overflow-hidden rounded-lg">
-                          <img
-                            alt=""
-                            src="/home/foto5.jpeg"
-                            className="size-full object-cover"
-                          />
-                        </div>
                       </div>
                       <div className="grid shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
                         <div className="h-64 w-44 overflow-hidden rounded-lg">
                           <img
                             alt=""
-                            src="/home/foto6.jpeg"
-                            className="size-full object-cover"
+                            src="/merk/star.png"
+                            className="size-full object-contain"
                           />
                         </div>
                         <div className="h-64 w-44 overflow-hidden rounded-lg">
                           <img
                             alt=""
-                            src="/home/foto7.jpeg"
+                            src="/home/foto6.jpeg"
                             className="size-full object-cover"
                           />
                         </div>
