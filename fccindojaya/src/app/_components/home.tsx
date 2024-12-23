@@ -2,6 +2,7 @@
 
 import { Header } from "~/app/_components/header";
 import { Footer } from "~/app/_components/footer";
+import Image from "next/image";
 
 const categories = [
   {
@@ -76,14 +77,18 @@ export function HomeComponent() {
                   <div className="flex items-center space-x-6 overflow-hidden lg:space-x-8">
                     <div className="grid shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
                       <div className="h-64 w-44 overflow-hidden rounded-lg sm:opacity-0 lg:opacity-100">
-                        <img
+                        <Image
+                          width={176}
+                          height={256}
                           alt=""
                           src="/merk/fcc.png"
                           className="size-full object-contain"
                         />
                       </div>
                       <div className="h-64 w-44 overflow-hidden rounded-lg">
-                        <img
+                        <Image
+                          width={176}
+                          height={256}
                           alt=""
                           src="/home/foto2.jpeg"
                           className="size-full object-cover"
@@ -92,21 +97,27 @@ export function HomeComponent() {
                     </div>
                     <div className="grid shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
                       <div className="h-64 w-44 overflow-hidden rounded-lg">
-                        {/* <img
+                        {/* <Image
+                          width={176}
+                          height={256}
                         alt=""
                         src=""
                         className="size-full object-cover"
                       /> */}
                       </div>
                       <div className="h-64 w-44 overflow-hidden rounded-lg">
-                        <img
+                        <Image
+                          width={176}
+                          height={256}
                           alt=""
                           src="/merk/sj.png"
                           className="size-full object-contain"
                         />
                       </div>
                       <div className="h-64 w-44 overflow-hidden rounded-lg">
-                        <img
+                        <Image
+                          width={176}
+                          height={256}
                           alt=""
                           src="/home/foto4.jpeg"
                           className="size-full object-cover"
@@ -115,14 +126,18 @@ export function HomeComponent() {
                     </div>
                     <div className="grid shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
                       <div className="h-64 w-44 overflow-hidden rounded-lg">
-                        <img
+                        <Image
+                          width={176}
+                          height={256}
                           alt=""
                           src="/merk/star.png"
                           className="size-full object-contain"
                         />
                       </div>
                       <div className="h-64 w-44 overflow-hidden rounded-lg">
-                        <img
+                        <Image
+                          width={176}
+                          height={256}
                           alt=""
                           src="/home/foto6.jpeg"
                           className="size-full object-cover"
@@ -170,7 +185,9 @@ export function HomeComponent() {
                       className="relative flex h-80 w-56 flex-col overflow-hidden rounded-lg p-6 hover:opacity-75 xl:w-auto"
                     >
                       <span aria-hidden="true" className="absolute inset-0">
-                        <img
+                        <Image
+                          width={224}
+                          height={320}
                           alt=""
                           src={category.imageSrc}
                           className="size-full object-cover"
@@ -210,7 +227,7 @@ export function HomeComponent() {
             <div className="absolute inset-0">
               <img
                 alt=""
-                src="https://tailwindui.com/plus/img/ecommerce-images/home-page-01-feature-section-01.jpg"
+                src="/home/home-page-01-feature-section-01.jpg"
                 className="size-full object-cover"
               />
             </div>

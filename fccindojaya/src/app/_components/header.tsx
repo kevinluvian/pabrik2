@@ -17,6 +17,7 @@ import {
 } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import Image from "next/image";
 
 const navigation = {
   categories: [],
@@ -188,7 +189,13 @@ export function Header() {
               <div className="mx-2 flex lg:ml-0">
                 <Link href="/">
                   <span className="sr-only">FCC Indo Jaya</span>
-                  <img alt="" src="/logo.jpeg" className="h-24 w-auto" />
+                  <Image
+                    height={96}
+                    width={96}
+                    alt=""
+                    src="/logo.jpeg"
+                    className="h-24 w-auto"
+                  />
                 </Link>
               </div>
 
