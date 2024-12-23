@@ -6,18 +6,23 @@ import { type Metadata } from "next";
 import { TRPCReactProvider } from "~/trpc/react";
 
 export const metadata: Metadata = {
-  title: "FCC Indo Jaya",
+  title: "PT. FCC Indo Jaya",
   description:
-    "FCC Indo Jaya | Bergerak dalam bidang jual-beli aksesoris garmen seperti resleting, kancing, mote-mote, karet, benang, stopper, gesper, alat tembakan merek, tali merek, lem tembak, peniti",
+    "Bergerak dalam bidang jual-beli aksesoris garmen seperti resleting, kancing, mote-mote, karet, benang, stopper, gesper, alat tembakan merek, tali merek, lem tembak, peniti",
   icons: [{ rel: "icon", url: "/favicon.ico" }],
   openGraph: {
     type: "website",
     url: "https://fccindojaya.co.id",
-    title: "FCC Indo Jaya",
+    title: "PT. FCC Indo Jaya",
     description:
-      "FCC Indo Jaya | Bergerak dalam bidang jual-beli aksesoris garmen seperti resleting, kancing, mote-mote, karet, benang, stopper, gesper, alat tembakan merek, tali merek, lem tembak, peniti",
-    siteName: "FCC Indo Jaya",
-    images: ["/logo.jpeg", "/merk/fcc.png", "/merk/sj.png", "/merk/star.png"],
+      "Bergerak dalam bidang jual-beli aksesoris garmen seperti resleting, kancing, mote-mote, karet, benang, stopper, gesper, alat tembakan merek, tali merek, lem tembak, peniti",
+    siteName: "PT. FCC Indo Jaya",
+    images: [
+      "https://fccindojaya.co.id/logo.jpeg",
+      "https://fccindojaya.co.id/merk/fcc.png",
+      "https://fccindojaya.co.id/merk/sj.png",
+      "https://fccindojaya.co.id/merk/star.png",
+    ],
   },
 };
 

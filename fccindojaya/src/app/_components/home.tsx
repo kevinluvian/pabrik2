@@ -1,5 +1,3 @@
-"use client";
-
 import { Header } from "~/app/_components/header";
 import { Footer } from "~/app/_components/footer";
 import Image from "next/image";
