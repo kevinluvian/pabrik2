@@ -1,7 +1,7 @@
 "use client";
 
 import { Footer } from "~/app/_components/footer";
-import { Header } from "../_components/header";
+import { Header } from "~/app/_components/header";
 
 const products = [
   {
@@ -95,7 +95,7 @@ export default function AllProducts() {
       <div>
         <main>
           <div className="bg-white">
-            <div className="mx-auto max-w-7xl px-4 pb-4 pt-16 sm:px-6 lg:px-8">
+            <div className="mx-auto max-w-7xl px-4 pb-4 pt-8 sm:px-6 lg:px-8">
               <h1 className="text-3xl font-bold tracking-tight text-gray-900">
                 Semua Produk
               </h1>
@@ -142,9 +142,11 @@ export default function AllProducts() {
                     src={product.imageSrc}
                     className="aspect-square w-full rounded-lg bg-gray-200 object-cover group-hover:opacity-75 xl:aspect-[7/8]"
                   />
-                  <h3 className="mt-4 text-sm text-gray-700">{product.name}</h3>
+                  <h3 className="sm:text-md mt-4 text-center text-lg text-gray-900">
+                    {product.name}
+                  </h3>
                   <p className="mt-1 text-lg font-medium text-gray-900">
-                    {product.price}
+                    {/* {product.price} */}
                   </p>
                 </a>
               ))}
