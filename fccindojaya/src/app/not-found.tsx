@@ -12,9 +12,9 @@ export default function Example() {
         ```
       */}
       <main className="relative isolate h-screen">
-        <Image
+        <img
           alt=""
-          src="https://images.unsplash.com/photo-1545972154-9bb223aac798?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=3050&q=80&exp=8&con=-15&sat=-75"
+          src="/notfound.avif"
           className="absolute inset-0 -z-10 size-full object-cover object-top"
         />
         <div className="mx-auto max-w-7xl px-6 py-32 text-center sm:py-40 lg:px-8">
@@ -32,7 +32,7 @@ export default function Example() {
               className="relative z-10 inline-block rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-center font-medium text-white hover:bg-indigo-700"
             >
               <div className="flex items-center justify-center">
-                <Image
+                <img
                   alt="Kirim Whatsapp ke FCC"
                   src="/home/wa.png"
                   className="mr-2 h-8 w-auto"
