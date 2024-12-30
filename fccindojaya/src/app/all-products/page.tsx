@@ -12,7 +12,11 @@ interface Product {
   imageAlt: string;
 }
 
-export default async function AllProducts() {
+export const revalidate = 3600; // invalidate every hour
+export const dynamicParams = false;
+export const dynamic = "force-static";
+
+export default async function AllProducts({ params }: any) {
   const { products } = await api.product.GetProducts({ text: "from tRPC" });
 
   return (
@@ -82,6 +86,13 @@ export default async function AllProducts() {
                   target="_blank"
                   className="group"
                 >
+                  {/* <Image
+                    width={280}
+                    height={300}
+                    alt={product.imageAlt}
+                    src={product.imageSrc}
+                    className="aspect-square w-full rounded-lg bg-gray-200 object-cover group-hover:opacity-75 xl:aspect-[7/8]"
+                  /> */}
                   <img
                     alt={product.imageAlt}
                     src={product.imageSrc}
