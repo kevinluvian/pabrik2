@@ -19,6 +19,7 @@
     "preview": "next build && next start",
     "start": "next start",
     "typecheck": "tsc --noEmit",
+    "scripts:update_docker_image": "docker build -t warehouse.skleem.co/fccindojaya -f Dockerfile . && docker push warehouse.skleem.co/fccindojaya",
     "scripts:generate_thumbnails": "tsx scripts/generate_thumbnails.ts",
     "scripts:sync_products_s3": "aws s3 sync cdn/products s3://cdn.fccindojaya.co.id/products --region ap-southeast-3 --delete --cache-control max-age=3600,public"
   },
