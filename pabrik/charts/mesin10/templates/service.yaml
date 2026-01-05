@@ -11,5 +11,9 @@ spec:
       targetPort: http
       protocol: TCP
       name: http
+    - port: {{ .Values.service.portudp }}
+      targetPort: {{ .Values.service.portudp }}
+      protocol: UDP
+      name: customudp
   selector:
     {{- include "mesin10.selectorLabels" . | nindent 4 }}
