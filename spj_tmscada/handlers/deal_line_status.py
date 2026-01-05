@@ -1,9 +1,24 @@
 import struct
 import datetime
 import logging
+import socket
 from tmscada_utils import crc32
 
 logger = logging.getLogger(__name__)
+
+def get_local_ip(target_ip):
+    """
+    Determines the local IP address used to reach the target_ip.
+    """
+    try:
+        # Create a dummy socket to find the routing interface
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.connect((target_ip, 1)) # Port doesn't matter
+        local_ip = s.getsockname()[0]
+        s.close()
+        return local_ip
+    except Exception:
+        return "127.0.0.1"
 
 def deal_line_status(server, addr, data):
     """
@@ -12,6 +27,8 @@ def deal_line_status(server, addr, data):
     Ref: DealLineStatus in 54_manual_refactor.c
     """
     try:
+        client_ip = addr[0]
+        
         # --- PACKET 1 ---
         # Length 46 (0x2E), ID 0x1000000
         
@@ -28,10 +45,14 @@ def deal_line_status(server, addr, data):
         struct.pack_into('<I', resp1, 12, 0x1000000)
         
         # IP Address Logic (Offsets 0x10-0x13)
+        # C code uses server's eth IP, modifies last byte.
         try:
-            ip_str = addr[0]
-            ip_parts = [int(x) for x in ip_str.split('.')]
+            # Get the server's IP on the interface talking to this client
+            server_ip_str = get_local_ip(client_ip)
+            ip_parts = [int(x) for x in server_ip_str.split('.')]
+            
             if len(ip_parts) == 4:
+                # Logic from C: increment last byte with overflow handling
                 if ip_parts[3] == 0xff:
                     ip_parts[3] = 0xfe
                 elif ip_parts[3] == 0xfe:
@@ -39,11 +60,11 @@ def deal_line_status(server, addr, data):
                 else:
                     ip_parts[3] += 1
                 
-                # Write modified IP to offsets 16-19 (0x10-0x13)
+                # Write modified Server IP to offsets 16-19 (0x10-0x13)
                 struct.pack_into('4B', resp1, 0x10, *ip_parts)
                 
-                # LOG ARP ACTION
-                logger.info(f"ARP Action (Simulated): arp -s {ip_parts[0]}.{ip_parts[1]}.{ip_parts[2]}.{ip_parts[3]} ...")
+                # Log the intended ARP action (Machine expects us to be at this new IP)
+                logger.info(f"Handshake IP calculated: {ip_parts[0]}.{ip_parts[1]}.{ip_parts[2]}.{ip_parts[3]}")
         except Exception as e:
             logger.error(f"Error parsing IP in deal_line_status: {e}")
 
@@ -58,6 +79,13 @@ def deal_line_status(server, addr, data):
         struct.pack_into('<H', resp1, 0x20, now.second)
         msec = int(now.microsecond / 1000)
         struct.pack_into('<H', resp1, 0x22, msec)
+
+        # MAC Address Copy (Offsets 0x24-0x29 / 36-41)
+        # Copy 6 bytes from input data offset 16 (0x10)
+        if len(data) >= 22: # Header 16 + MAC 6
+            mac_bytes = data[16:22]
+            resp1[36:42] = mac_bytes
+            logger.info(f"Copied MAC: {mac_bytes.hex()}")
 
         # CRC for Packet 1 (Offset 42, 0x2A)
         checksum_data1 = resp1[:42]
