@@ -8,6 +8,8 @@ spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       {{- include "mesin10.selectorLabels" . | nindent 6 }}
@@ -39,9 +41,12 @@ spec:
           env: {{- toYaml .Values.env | nindent 12 }}
           args: {{- toYaml .Values.args | nindent 12 }}
           ports:
-            - name: http
-              containerPort: {{ .Values.service.port }}
-              protocol: TCP
+            # - name: http
+            #   containerPort: {{ .Values.service.port }}
+            #   protocol: TCP
+            - name: customudp
+              containerPort: {{ .Values.service.portudp }}
+              protocol: UDP
           livenessProbe:
             {{- toYaml .Values.livenessProbe | nindent 12 }}
           readinessProbe:
