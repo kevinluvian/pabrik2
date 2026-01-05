@@ -33,7 +33,7 @@ logger = logging.getLogger(__name__)
 # Server Configuration
 UDP_IP = "0.0.0.0"
 UDP_PORT = 12345
-METRICS_PORT = 8000
+METRICS_PORT = 8111
 
 # Protocol IDs
 PID_TEMPERATURE      = 0x10000
