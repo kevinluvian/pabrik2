@@ -13,7 +13,6 @@ spec:
       name: http
     - port: {{ .Values.service.portudp }}
       targetPort: {{ .Values.service.portudp }}
-      nodePort: {{ .Values.service.portudp }}
       protocol: UDP
       name: customudp
   selector:
