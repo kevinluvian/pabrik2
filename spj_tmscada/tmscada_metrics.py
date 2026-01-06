@@ -1,77 +1,56 @@
-from prometheus_client import Gauge, Counter, Enum
+from prometheus_client import Gauge, Info, Counter
+from collections import defaultdict
 
 # --- Metric Definitions ---
 
-# Counters
-SHOT_COUNT = Gauge('tmscada_shot_count_total', 'Total number of shots', ['machine'])
-BAD_SHOT_COUNT = Gauge('tmscada_bad_shot_count_total', 'Total number of inferior/bad shots', ['machine'])
+# Meta-Metric: Packet Counts (System Metric)
+PACKET_COUNT = Counter('tmscada_packets_processed_total', 'Total number of packets processed', ['handler'])
 
-# Gauges - Times
-CYCLE_TIME = Gauge('tmscada_cycle_time_seconds', 'Last cycle time', ['machine'])
-INJECT_TIME = Gauge('tmscada_inject_time_seconds', 'Injection time', ['machine'])
-CHARGE_TIME = Gauge('tmscada_charge_time_seconds', 'Charge time', ['machine'])
+# Unified Numeric Metric
+# Exposes ALL numeric values using the original key name as the 'param' label.
+# This avoids dynamic metric creation while ensuring exhaustive coverage.
+METRIC_VALUE = Gauge('tmscada_metric_value', 'Numeric value of a machine parameter', ['machine', 'param'])
 
-# Gauges - Temperatures
-# Labels: machine, zone (1-9, Oil), type (Current/Set)
-TEMP_CELSIUS = Gauge('tmscada_temperature_celsius', 'Zone Temperature', ['machine', 'zone', 'type'])
+# Unified String/Info Metric
+# Exposes ALL string values as labels in this Info metric.
+MACHINE_INFO = Info('tmscada_machine_info', 'Machine String Parameters', ['machine'])
 
-# Gauges - Energy
-ENERGY_TOTAL = Gauge('tmscada_energy_consumption_total', 'Total Energy Consumption', ['machine'])
+# Global cache to accumulate info labels per machine
+# Structure: { machine_label: { 'ip_address': '...', 'tmCraftID': '...', ... } }
+_machine_info_cache = defaultdict(dict)
 
-# Enum/State
-MACHINE_STATE = Gauge('tmscada_machine_state', 'Operational State Code', ['machine'])
-ERROR_STATE = Gauge('tmscada_error_state', 'Current Error Code (0 = Normal)', ['machine'])
-
-def update_metric(machine_ip, key, value):
+def update_metric(machine_label, machine_ip, key, value):
     """
-    Maps internal data_store keys to Prometheus metrics.
+    Exhaustively exposes all parameters to Prometheus using their original keys.
+    - Numeric values -> tmscada_metric_value{param="OriginalKey"}
+    - String values  -> tmscada_machine_info{OriginalKey="value"}
     """
     try:
-        # --- Temperature Maps ---
-        if key.startswith('tmTemp'):
-            # Format: tmTemp{i}_Current or tmTemp{i}_Set
-            if 'Oil' in key:
-                zone = 'Oil'
-                m_type = 'Current' # Oil usually doesn't have Set in this map
-            elif 'CurrentB' in key:
-                 # tmTemp{i}_CurrentB -> Zone {i} Side B
-                 parts = key.replace('tmTemp', '').split('_')
-                 zone = f"{parts[0]}_B"
-                 m_type = 'Current'
-            elif 'SetB' in key:
-                 parts = key.replace('tmTemp', '').split('_')
-                 zone = f"{parts[0]}_B"
-                 m_type = 'Set'
-            else:
-                # tmTemp1_Current -> Zone 1, Current
-                parts = key.replace('tmTemp', '').split('_')
-                zone = parts[0]
-                m_type = parts[1]
+        # --- 1. Manage Metadata (IP & Strings) ---
+        
+        # Always ensure IP is recorded in metadata cache
+        if _machine_info_cache[machine_label].get('ip_address') != machine_ip:
+            _machine_info_cache[machine_label]['ip_address'] = machine_ip
+            # Trigger update to ensure IP is captured immediately
+            MACHINE_INFO.labels(machine=machine_label).info(_machine_info_cache[machine_label])
+
+        if isinstance(value, str):
+            # Clean string value
+            clean_val = value.strip()
             
-            TEMP_CELSIUS.labels(machine=machine_ip, zone=zone, type=m_type).set(value)
+            # Only update if value changed to avoid excessive mutex locking in Prometheus client
+            if _machine_info_cache[machine_label].get(key) != clean_val:
+                _machine_info_cache[machine_label][key] = clean_val
+                MACHINE_INFO.labels(machine=machine_label).info(_machine_info_cache[machine_label])
+            return
 
-        # --- Production Stats ---
-        elif key == 'ulShotCount' or key == 'dwShotCountCurrent':
-            SHOT_COUNT.labels(machine=machine_ip).set(value)
-        elif key == 'tmCycletime':
-            CYCLE_TIME.labels(machine=machine_ip).set(value / 1000.0 if value > 100 else value) # Assuming ms?
-        elif key == 'tmInjecttime':
-            INJECT_TIME.labels(machine=machine_ip).set(value / 1000.0 if value > 100 else value)
-        elif key == 'tmChargeTime':
-            CHARGE_TIME.labels(machine=machine_ip).set(value / 1000.0 if value > 100 else value)
-        elif key == 'tmInferior' or key == 'wtmBadShotCount':
-            BAD_SHOT_COUNT.labels(machine=machine_ip).set(value)
-
-        # --- Energy ---
-        elif key == 'tmTotalEnergyConsumption' or key == 'dwTotalElectricity':
-            ENERGY_TOTAL.labels(machine=machine_ip).set(value)
-
-        # --- Status ---
-        elif key == 'wOperState':
-            MACHINE_STATE.labels(machine=machine_ip).set(value)
-        elif key == 'LastError_Code':
-            ERROR_STATE.labels(machine=machine_ip).set(value)
+        # --- 2. Numeric Values ---
+        if isinstance(value, (int, float)):
+            # Direct mapping: Original Key -> Param Label
+            # This covers ALL numeric parameters (Temps, Pressures, Counts, Energies, etc.)
+            METRIC_VALUE.labels(machine=machine_label, param=key).set(value)
+            return
 
     except Exception as e:
-        # Fail silently to avoid spamming logs for every minor update
+        # Fail silently to avoid spamming logs for every minor update issue
         pass

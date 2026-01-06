@@ -85,6 +85,17 @@ def deal_line_status(server, addr, data):
         if len(data) >= 22: # Header 16 + MAC 6
             mac_bytes = data[16:22]
             resp1[36:42] = mac_bytes
+            
+            # Update Machine Context with MAC
+            try:
+                # Format: d4:e9:5e:16:e2:2c
+                mac_str = ":".join("{:02x}".format(b) for b in mac_bytes)
+                if addr[0] in server.machines:
+                    server.machines[addr[0]].mac = mac_str
+                    logger.info(f"Associated IP {addr[0]} with MAC {mac_str}")
+            except Exception as e:
+                logger.error(f"Failed to set MAC on context: {e}")
+
             logger.info(f"Copied MAC: {mac_bytes.hex()}")
 
         # CRC for Packet 1 (Offset 42, 0x2A)

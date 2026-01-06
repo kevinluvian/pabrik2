@@ -14,6 +14,8 @@ class TestDealLineStatus(unittest.TestCase):
         self.server = MagicMock()
         self.server.sock = MagicMock()
         self.client_addr = ('192.168.13.100', 12345)
+        # Mock the machines dictionary required by the handler update
+        self.server.machines = {self.client_addr[0]: MagicMock()}
 
     def test_tmscada_box_replay(self):
         """
