@@ -34,7 +34,8 @@ def custom():
     fields = data['fields']
 
     # Connect to your database and fetch the row count
-    connection = fdb.connect(database='D:\App\GLSJ\Db\GLSJ.FDB', user='SYSDBA', password='masterkey', charset='ISO8859_1')
+    # 100.101.51.40 is the tailscale ip of the harmoni server which hosts the DB.
+    connection = fdb.connect(database='100.101.51.40/3050:D:\App\GLSJ\Db\GLSJ.FDB', user='SYSDBA', password='masterkey', charset='ISO8859_1')
     cur = connection.cursor()
     cur.execute(query)
     result = []
@@ -63,7 +64,8 @@ def custom():
 @auth.login_required
 def metrics():
     # Connect to your database and fetch the row count
-    connection = fdb.connect(database='D:\App\GLSJ\Db\GLSJ.FDB', user='SYSDBA', password='masterkey', charset='ISO8859_1')
+    # 100.101.51.40 is the tailscale ip of the harmoni server which hosts the DB.
+    connection = fdb.connect(database='100.101.51.40/3050:D:\App\GLSJ\Db\GLSJ.FDB', user='SYSDBA', password='masterkey', charset='ISO8859_1')
     cur = connection.cursor()
     cur.execute("""SELECT 
      export.F_PROCODE,
