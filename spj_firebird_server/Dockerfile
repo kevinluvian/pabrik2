@@ -47,8 +47,6 @@ COPY . /home/app
 
 WORKDIR /home/app
 
-RUN pip3 install -r requirements.txt
-
 EXPOSE 3050
 
 ENTRYPOINT ["/home/app/start.sh"]
