@@ -58,7 +58,16 @@ PID_GET_USER         = 0x2000002
 
 # MAC Address to Human Readable Name Mapping
 MAC_TO_NAME = {
-    'd4:e9:5e:16:e2:2c': 'mesin10'
+    'b8:80:4f:f7:17:24': 'mesin1',
+    'b8:80:4f:f6:d2:6f': 'mesin2',
+    '14:42:fc:96:b8:08': 'mesin3',
+    '14:42:fc:b4:57:89': 'mesin4',
+    '14:42:fc:95:e0:ad': 'mesin5',
+    'b8:80:4f:f7:14:1f': 'mesin6',
+    '14:42:fc:95:ea:a3': 'mesin8',
+    'b8:80:4f:f7:1f:cd': 'mesin9',
+    'd4:e9:5e:16:e2:2c': 'mesin10',
+    '24:76:25:23:01:50': 'mesin11',
 }
 
 class MachineContext(dict):
