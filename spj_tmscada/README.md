@@ -4,6 +4,6 @@ This is the implementation of tmScada rewritten from the original tmScada box.
 
 How to deploy:
 
-docker build . -t kevin2238/pabrik-prometheus:latest
+docker build . -t warehouse.skleem.co/spj_tmscada:latest
 
-docker push kevin2238/pabrik-prometheus:latest
+docker push warehouse.skleem.co/spj_tmscada:latest
